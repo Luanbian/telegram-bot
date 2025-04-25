@@ -1,7 +1,7 @@
 import { bot } from '../../../services';
-import { helpCommand, startCommand } from './core'; // Exemplo de outro comando
+import { helpCommand, startCommand, lineUpCommand } from './core';
 
-const commands = [helpCommand, startCommand];
+const commands = [helpCommand, startCommand, lineUpCommand];
 
 commands.forEach((command) => {
     bot.onText(command.pattern, (msg) => command.handler(bot, msg));
