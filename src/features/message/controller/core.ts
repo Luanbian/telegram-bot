@@ -1,7 +1,9 @@
+import debug from 'debug';
 import { Router } from 'express';
 import bot from '../../../services/telegram';
 import { APIResponse } from '../../../services';
 
+const logger = debug('features:message:controller:core');
 const route = Router();
 
 route.post('/', async (req, res) => {
@@ -13,7 +15,7 @@ route.post('/', async (req, res) => {
             data: {},
         } as APIResponse);
     } catch (error) {
-        console.error('Error to process update: ', error);
+        logger(`Error to process update: ${JSON.stringify(error, null, 2)}`);
         res.status(500).json({
             code: 'feature.message.core.webhook.error',
             message: 'Error to process update',

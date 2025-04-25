@@ -1,3 +1,4 @@
+import debug from 'debug';
 import os from 'os';
 import express from 'express';
 import cors from 'cors';
@@ -5,6 +6,7 @@ import { EXPRESS_PORT } from '../../constants/express';
 import { APIEcho, APIResponse } from './types';
 import pkgJson from '../../../package.json';
 
+const logger = debug('services:express');
 const app = express();
 
 // trust proxy
@@ -27,7 +29,7 @@ app.get('/', (_req, res) => {
 });
 
 app.listen(EXPRESS_PORT, () => {
-    console.log('Server is running on port', EXPRESS_PORT);
+    logger(`Server is running on port ${EXPRESS_PORT}`);
 });
 
 export { app, APIResponse, APIEcho };
