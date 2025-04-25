@@ -4,7 +4,6 @@ import cors from 'cors';
 import { EXPRESS_PORT } from '../../constants/express';
 import { APIEcho, APIResponse } from './types';
 import pkgJson from '../../../package.json';
-import { setWebhookUrl } from '../webhook';
 
 const app = express();
 
@@ -29,7 +28,6 @@ app.get('/', (_req, res) => {
 
 app.listen(EXPRESS_PORT, () => {
     console.log('Server is running on port', EXPRESS_PORT);
-    setWebhookUrl();
 });
 
 export { app, APIResponse, APIEcho };
