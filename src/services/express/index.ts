@@ -2,7 +2,7 @@ import debug from 'debug';
 import os from 'os';
 import express from 'express';
 import cors from 'cors';
-import { EXPRESS_PORT } from '../../constants/express';
+import { EXPRESS_PORT } from '../../constants';
 import { APIEcho, APIResponse } from './types';
 import pkgJson from '../../../package.json';
 

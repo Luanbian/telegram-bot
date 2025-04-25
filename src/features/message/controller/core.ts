@@ -1,7 +1,6 @@
 import debug from 'debug';
 import { Router } from 'express';
-import { bot } from '../../../services/telegram';
-import { APIResponse } from '../../../services';
+import { bot, APIResponse } from '../../../services';
 
 const logger = debug('features:message:controller:core');
 const route = Router();

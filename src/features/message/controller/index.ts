@@ -1,6 +1,6 @@
 import Router from 'express';
 import { route as coreRouter } from './core';
-import { WEBHOOK_ENDPOINT } from '../../../constants/telegram';
+import { WEBHOOK_ENDPOINT } from '../../../constants';
 
 const router = Router();
 

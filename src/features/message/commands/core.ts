@@ -1,4 +1,4 @@
-import { TelegramBot } from '../../../services/telegram';
+import { TelegramBot } from '../../../services';
 
 export const helpCommand = {
     pattern: /\/help/,

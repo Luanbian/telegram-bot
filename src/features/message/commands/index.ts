@@ -1,4 +1,4 @@
-import { bot } from '../../../services/telegram';
+import { bot } from '../../../services';
 import { helpCommand, startCommand } from './core'; // Exemplo de outro comando
 
 const commands = [helpCommand, startCommand];
