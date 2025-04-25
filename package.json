@@ -1,6 +1,6 @@
 {
     "name": "telegram-bot",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "telegram bot for furia e-sports",
     "main": "index.js",
     "scripts": {
