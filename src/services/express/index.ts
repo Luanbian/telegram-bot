@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // heath check
-app.use('/', (_req, res) => {
+app.get('/', (_req, res) => {
     res.status(200).json({
         code: 'echo',
         message: 'OK',
