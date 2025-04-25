@@ -1,3 +1,4 @@
 import * as controller from './controller';
+import * as commands from './commands';
 
-export { controller };
+export { controller, commands };

@@ -8,4 +8,4 @@ const bot = new TelegramBot(TELEGRAM_TOKEN, { webHook: true });
 
 bot.setWebHook(SET_TELEGRAM_WEBHOOK_URL);
 
-export default bot;
+export { bot, TelegramBot };
