@@ -6,7 +6,11 @@ import dedent from 'dedent';
 import { format, fromUnixTime } from 'date-fns';
 import { TelegramBot } from '../../../services';
 import { buildContent } from '../../../utils/buildContent';
-import { DRAFT_API_URL, DRAFT_BASE_URL } from '../../../constants';
+import {
+    DRAFT_API_URL,
+    DRAFT_BASE_URL,
+    DRAFT_TEAM_ID,
+} from '../../../constants';
 import { extractPlayersByStatus } from '../../../utils/extractPlayerByStatus';
 
 const logger = debug('features:message:commands:core');
@@ -51,7 +55,7 @@ export const lineUpCommand = {
             let content = fs.readFileSync(contentPath, 'utf-8');
 
             const res = await axios.get(
-                `${DRAFT_API_URL}/teams/330?actual=true`
+                `${DRAFT_API_URL}/teams/${DRAFT_TEAM_ID}?actual=true`
             );
             const { playerData } = res.data.data;
 
@@ -94,10 +98,10 @@ export const nextMatchupCommand = {
 
             const [matchesResponse, tournamentsResponse] = await Promise.all([
                 axios.get(
-                    `${DRAFT_API_URL}/matches?page=1&amount=10&finished=0&featured=0&team=330&showHidden=0`
+                    `${DRAFT_API_URL}/matches?page=1&amount=10&finished=0&featured=0&team=${DRAFT_TEAM_ID}&showHidden=0`
                 ),
                 axios.get(
-                    `${DRAFT_API_URL}/tournaments?page=1&amount=50&finished=0&featured=0&team=330`
+                    `${DRAFT_API_URL}/tournaments?page=1&amount=50&finished=0&featured=0&team=${DRAFT_TEAM_ID}`
                 ),
             ]);
 
@@ -193,7 +197,7 @@ export const lastResultsCommand = {
             let content = fs.readFileSync(contentPath, 'utf-8');
 
             const res = await axios.get(
-                `${DRAFT_API_URL}/matches?page=1&amount=10&finished=1&featured=0&team=330&showHidden=0`
+                `${DRAFT_API_URL}/matches?page=1&amount=10&finished=1&featured=0&team=${DRAFT_TEAM_ID}&showHidden=0`
             );
             const { list, totalItems } = res.data.data;
 
@@ -253,7 +257,7 @@ export const clipsCommand = {
             let content = fs.readFileSync(contentPath, 'utf-8');
 
             const { data: matchData } = await axios.get(
-                `${DRAFT_API_URL}/matches?page=1&amount=10&finished=1&featured=0&team=330&showHidden=0`
+                `${DRAFT_API_URL}/matches?page=1&amount=10&finished=1&featured=0&team=${DRAFT_TEAM_ID}&showHidden=0`
             );
             const { matchId } = matchData.data.list[0];
 
@@ -296,7 +300,7 @@ export const newsCommand = {
             let content = fs.readFileSync(contentPath, 'utf-8');
 
             const res = await axios.get(
-                `${DRAFT_API_URL}/news?page=1&amount=5&teams=330`
+                `${DRAFT_API_URL}/news?page=1&amount=5&teams=${DRAFT_TEAM_ID}`
             );
             const { news } = res.data.data;
 
