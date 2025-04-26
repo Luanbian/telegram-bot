@@ -30,8 +30,6 @@ Bala na mira, coração no peito e garra na alma — **vem aí mais desafios ond
 
 - `/noticias` — **Atualizações, resultados e novidades na velocidade da bala.**
 
-![FURIA Esports](https://furiagg.fbitsstatic.net/img/b/1be4afd5-a727-4555-81fd-e779a32578be.jpg?w=1366&v=no-change)
-
 🌐 **Quer ver tudo de perto?**  
 👉 [furia.gg](https://www.furia.gg)
 

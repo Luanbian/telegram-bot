@@ -28,8 +28,6 @@ Confira como foi a última sequência de batalhas:
 
 - Digite `/proximos_jogos`
 
-![FURIA Esports](https://furiagg.fbitsstatic.net/img/b/1be4afd5-a727-4555-81fd-e779a32578be.jpg?w=1366&v=no-change)
-
 🌐 **Quer viver a experiência completa?**
 👉 [furia.gg](https://www.furia.gg)
 

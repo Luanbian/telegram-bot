@@ -8,12 +8,6 @@ Então você tem que conhecer a **FURIA STORE**: onde o estilo e a garra se enco
 🧢 Bonés insanos  
 🖤 Coleções exclusivas pra quem carrega o rugido no peito!
 
----
-
-![FURIA Esports](https://furiagg.fbitsstatic.net/img/b/1be4afd5-a727-4555-81fd-e779a32578be.jpg?w=1366&v=no-change)
-
----
-
 🎯 **Corre pra garantir seu drip da FURIA!**  
 [👉 ACESSE A LOJA OFICIAL AQUI!](https://furia.gg)
 

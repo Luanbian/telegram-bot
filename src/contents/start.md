@@ -28,10 +28,6 @@ Prepare-se para viver a experiência completa da nossa matilha.
 
 ---
 
-📸 **Imagem do time para aquecer o coração da torcida:**
-
-![FURIA Esports](https://furiagg.fbitsstatic.net/img/b/1be4afd5-a727-4555-81fd-e779a32578be.jpg?w=1366&v=no-change)
-
 🌐 **Acesse também o nosso site oficial para muito mais conteúdo:**  
 👉 [furia.gg](https://www.furia.gg)
 

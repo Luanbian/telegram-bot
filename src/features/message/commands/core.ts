@@ -266,7 +266,6 @@ export const clipsCommand = {
             data.forEach((e: any) => {
                 clips += `${dedent(`
                         ### 🎥 **"${e.highlightTitle}"**
-                        ![0](${e.highlightThumb})
                         [👉 Assista o clipe aqui!](https://clips.twitch.tv/${e.highlightName})
                     `)}\n\n`;
             });
@@ -306,7 +305,6 @@ export const newsCommand = {
                 newsList += `${dedent(`
                     ### 📰 ** ${e.postTitle} **
                     - ${e.postExcerpt}
-                    ![0](${e.postImage})
                     [👉 Leia a matéria completa aqui!](${DRAFT_BASE_URL}/noticia/${e.postSlug})
                 `)}\n\n`;
             });
