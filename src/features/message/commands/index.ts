@@ -6,6 +6,8 @@ import {
     nextMatchupCommand,
     lastResultsCommand,
     clipsCommand,
+    newsCommand,
+    storeCommand,
 } from './core';
 
 const commands = [
@@ -15,6 +17,8 @@ const commands = [
     nextMatchupCommand,
     lastResultsCommand,
     clipsCommand,
+    newsCommand,
+    storeCommand,
 ];
 
 commands.forEach((command) => {

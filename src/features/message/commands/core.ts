@@ -29,6 +29,15 @@ export const startCommand = {
     },
 };
 
+export const storeCommand = {
+    pattern: /\/loja/,
+    handler: async (bot: TelegramBot, msg: any) => {
+        const chatId = msg.chat.id;
+        const content = buildContent('store');
+        bot.sendMessage(chatId, content, { parse_mode: 'Markdown' });
+    },
+};
+
 export const lineUpCommand = {
     pattern: /\/lineup/,
     handler: async (bot: TelegramBot, msg: any) => {
@@ -263,6 +272,46 @@ export const clipsCommand = {
             });
 
             content = content.replace('{{CLIPS}}', clips);
+
+            bot.sendMessage(chatId, content, { parse_mode: 'Markdown' });
+        } catch (error) {
+            logger('Error fetching data from API:', error);
+            bot.sendMessage(
+                msg.chat.id,
+                'Desculpe, algo deu errado. Tente novamente mais tarde.'
+            );
+        }
+    },
+};
+
+export const newsCommand = {
+    pattern: /\/noticias/,
+    handler: async (bot: TelegramBot, msg: any) => {
+        try {
+            const chatId = msg.chat.id;
+
+            const contentPath = path.resolve(
+                __dirname,
+                `../../../contents/news.md`
+            );
+            let content = fs.readFileSync(contentPath, 'utf-8');
+
+            const res = await axios.get(
+                `${DRAFT_API_URL}/news?page=1&amount=5&teams=330`
+            );
+            const { news } = res.data.data;
+
+            let newsList = '';
+            news.forEach((e: any) => {
+                newsList += `${dedent(`
+                    ### 📰 ** ${e.postTitle} **
+                    - ${e.postExcerpt}
+                    ![0](${e.postImage})
+                    [👉 Leia a matéria completa aqui!](${DRAFT_BASE_URL}/noticia/${e.postSlug})
+                `)}\n\n`;
+            });
+
+            content = content.replace('{{NEWS}}', newsList);
 
             bot.sendMessage(chatId, content, { parse_mode: 'Markdown' });
         } catch (error) {
