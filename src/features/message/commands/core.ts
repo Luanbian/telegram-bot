@@ -6,7 +6,7 @@ import dedent from 'dedent';
 import { format, fromUnixTime } from 'date-fns';
 import { TelegramBot } from '../../../services';
 import { buildContent } from '../../../utils/buildContent';
-import { DRAFT_API_URL } from '../../../constants';
+import { DRAFT_API_URL, DRAFT_BASE_URL } from '../../../constants';
 import { extractPlayersByStatus } from '../../../utils/extractPlayerByStatus';
 
 const logger = debug('features:message:commands:core');
@@ -158,6 +158,66 @@ export const nextMatchupCommand = {
                     `)}\n\n`;
                 });
                 content = content.replace('{{NEXT_TOURNAMENT}}', tournaments);
+            }
+
+            bot.sendMessage(chatId, content, { parse_mode: 'Markdown' });
+        } catch (error) {
+            logger('Error fetching data from API:', error);
+            bot.sendMessage(
+                msg.chat.id,
+                'Desculpe, algo deu errado. Tente novamente mais tarde.'
+            );
+        }
+    },
+};
+
+export const lastResultsCommand = {
+    pattern: /\/ultimos_resultados/,
+    handler: async (bot: TelegramBot, msg: any) => {
+        try {
+            const chatId = msg.chat.id;
+
+            const contentPath = path.resolve(
+                __dirname,
+                `../../../contents/lastResults.md`
+            );
+            let content = fs.readFileSync(contentPath, 'utf-8');
+
+            const res = await axios.get(
+                `${DRAFT_API_URL}/matches?page=1&amount=10&finished=1&featured=0&team=330&showHidden=0`
+            );
+            const { list, totalItems } = res.data.data;
+
+            if (totalItems > 0 && list.length > 0) {
+                let results = '';
+                let victories = 0;
+                let defeats = 0;
+
+                list.forEach((e: any) => {
+                    const date = fromUnixTime(e.matchDate);
+                    const formattedDate = format(date, 'dd/MM/yyyy');
+
+                    const furia =
+                        e.teamA.teamName === 'FURIA'
+                            ? e.seriesScoreA
+                            : e.seriesScoreB;
+                    const opponent =
+                        e.teamA.teamName === 'FURIA'
+                            ? e.seriesScoreB
+                            : e.seriesScoreA;
+
+                    if (furia > opponent) victories += 1;
+                    else defeats += 1;
+
+                    results += `${dedent(`
+                        🏆 **${formattedDate}  ${e.teamA.teamName} Vs ${e.teamB.teamName}** 
+                        - 🆚 ${e.teamA.teamName} ${e.seriesScoreA} x ${e.seriesScoreB} ${e.teamB.teamName} — *MD${e.bestOf}* 🔥
+                        - ▶️  [Reveja os lances](${DRAFT_BASE_URL}/partida/${e.matchId}-${e.teamA.teamName}-vs-${e.teamB.teamName}-${e.tournament.tournamentName})
+                    `)}\n\n`;
+                });
+                content = content.replace('{{LAST_RESULTS}}', results);
+                content = content.replace('{{VICTORIES}}', `${victories}`);
+                content = content.replace('{{DEFEATS}}', `${defeats}`);
             }
 
             bot.sendMessage(chatId, content, { parse_mode: 'Markdown' });
