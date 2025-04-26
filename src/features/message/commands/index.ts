@@ -5,6 +5,7 @@ import {
     lineUpCommand,
     nextMatchupCommand,
     lastResultsCommand,
+    clipsCommand,
 } from './core';
 
 const commands = [
@@ -13,6 +14,7 @@ const commands = [
     lineUpCommand,
     nextMatchupCommand,
     lastResultsCommand,
+    clipsCommand,
 ];
 
 commands.forEach((command) => {

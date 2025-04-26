@@ -230,3 +230,47 @@ export const lastResultsCommand = {
         }
     },
 };
+
+export const clipsCommand = {
+    pattern: /\/clipes/,
+    handler: async (bot: TelegramBot, msg: any) => {
+        try {
+            const chatId = msg.chat.id;
+
+            const contentPath = path.resolve(
+                __dirname,
+                `../../../contents/clips.md`
+            );
+            let content = fs.readFileSync(contentPath, 'utf-8');
+
+            const { data: matchData } = await axios.get(
+                `${DRAFT_API_URL}/matches?page=1&amount=10&finished=1&featured=0&team=330&showHidden=0`
+            );
+            const { matchId } = matchData.data.list[0];
+
+            const res = await axios.get(
+                `${DRAFT_API_URL}/matches/${matchId}/highlights`
+            );
+            const { data } = res.data;
+
+            let clips = '';
+            data.forEach((e: any) => {
+                clips += `${dedent(`
+                        ### 🎥 **"${e.highlightTitle}"**
+                        ![0](${e.highlightThumb})
+                        [👉 Assista o clipe aqui!](https://clips.twitch.tv/${e.highlightName})
+                    `)}\n\n`;
+            });
+
+            content = content.replace('{{CLIPS}}', clips);
+
+            bot.sendMessage(chatId, content, { parse_mode: 'Markdown' });
+        } catch (error) {
+            logger('Error fetching data from API:', error);
+            bot.sendMessage(
+                msg.chat.id,
+                'Desculpe, algo deu errado. Tente novamente mais tarde.'
+            );
+        }
+    },
+};
