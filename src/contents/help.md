@@ -20,9 +20,6 @@ Aqui está o **arsenal completo de comandos** pra você dominar o bot como um ve
 - 🎥 `/clipes`  
   _Reviva os highlights que fizeram o Brasil gritar “É FURIA!”_
 
-- 📸 `/midias`  
-  _Acesse fotos exclusivas do time nos treinos, viagens e campeonatos._
-
 - 🎁 `/loja`  
   _Mergulhe no estilo FURIA com a nossa loja oficial._
 

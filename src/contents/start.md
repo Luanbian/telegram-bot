@@ -23,9 +23,6 @@ Prepare-se para viver a experiência completa da nossa matilha.
 - 🎥 **Clipes e jogadas épicas** — Reviva momentos que arrepiam:  
   `/clipes`
 
-- 📸 **Mídias e bastidores** — Fotos exclusivas da equipe:  
-  `/midias`
-
 - 🎁 **Loja FURIA** — Dê uma olhada nos itens oficiais da nossa coleção:  
   `/loja`
 
