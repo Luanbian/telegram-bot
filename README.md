@@ -56,11 +56,11 @@ Este projeto foi desenvolvido como um desafio técnico para a equipe de recrutam
 
 ## 📸 Exemplos Visuais
 
-| Função         | Imagem                                                 |
-| :------------- | :----------------------------------------------------- |
-| Boas-vindas    | ![Start Screen](https://i.imgur.com/example-start.jpg) |
-| Últimos Clipes | ![Clipes](https://i.imgur.com/example-clips.jpg)       |
-| Lineup         | ![Lineup](https://i.imgur.com/example-lineup.jpg)      |
+| Função         | Imagem                                                                               |
+| :------------- | :----------------------------------------------------------------------------------- |
+| Boas-vindas    | ![Start Screen](https://github.com/Luanbian/telegram-bot/blob/main/public/start.png) |
+| Últimos Clipes | ![Clipes](https://github.com/Luanbian/telegram-bot/blob/main/public/clipe.png)       |
+| Notice         | ![Lineup](https://github.com/Luanbian/telegram-bot/blob/main/public/notice.png)      |
 
 ---
 
