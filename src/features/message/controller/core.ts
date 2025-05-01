@@ -16,7 +16,7 @@ route.post('/', async (req, res) => {
             data: {},
         } as APIResponse);
     } catch (error) {
-        logger(`Error to process update: ${error}`);
+        logger(`Error to process updated: ${error}`);
         res.status(500).json({
             code: 'feature.message.core.webhook.error',
             message: 'Error to process update',
