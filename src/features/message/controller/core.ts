@@ -7,6 +7,7 @@ const route = Router();
 
 route.post('/', async (req, res) => {
     try {
+        logger(`processed: ${req.body}`);
         bot.processUpdate(req.body);
 
         res.status(200).json({
@@ -15,7 +16,7 @@ route.post('/', async (req, res) => {
             data: {},
         } as APIResponse);
     } catch (error) {
-        logger(`Error to process update: ${JSON.stringify(error, null, 2)}`);
+        logger(`Error to process update: ${error}`);
         res.status(500).json({
             code: 'feature.message.core.webhook.error',
             message: 'Error to process update',
