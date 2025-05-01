@@ -7,7 +7,6 @@ const route = Router();
 
 route.post('/', async (req, res) => {
     try {
-        logger(`processed: ${req.body}`);
         bot.processUpdate(req.body);
 
         res.status(200).json({

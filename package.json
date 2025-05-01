@@ -1,6 +1,6 @@
 {
     "name": "telegram-bot",
-    "version": "0.0.21",
+    "version": "0.0.22",
     "description": "telegram bot for furia e-sports",
     "main": "index.js",
     "scripts": {
@@ -10,7 +10,7 @@
         "prepare": "husky install",
         "postlint": "tsc --noEmit -p tsconfig.json",
         "format": "prettier --write src/**/*.ts package.json",
-        "build": "tsc"
+        "build": "tsc && cp -r src/contents build/src/contents"
     },
     "repository": {
         "type": "git",
