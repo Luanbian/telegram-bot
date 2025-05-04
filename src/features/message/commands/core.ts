@@ -105,8 +105,8 @@ export const nextMatchupCommand = {
                 ),
             ]);
 
-            const { list, totalItems } = matchesResponse.data.data;
-            if (totalItems === 0 && list.length === 0) {
+            const { list } = matchesResponse.data.data;
+            if (list.length === 0) {
                 content = content.replace(
                     '{{NEXT_MATCHUP}}',
                     dedent(`
@@ -123,14 +123,14 @@ export const nextMatchupCommand = {
                     `)
                 );
             }
-            if (totalItems > 0 && list.length > 0) {
+            if (list.length > 0) {
                 let matchups = '';
                 list.forEach((element: any) => {
                     const date = fromUnixTime(element.matchDate);
                     const formattedDate = format(date, 'dd/MM/yyyy');
 
                     matchups += `${dedent(`
-                        🎯 **FURIA vs ${element.teamB.teamName}**  
+                        🎯 **${element.teamA.teamName} vs ${element.teamB.teamName}**  
                         📍 Campeonato: ${element.tournament.tournamentName}
                         📅 Data: ${formattedDate}
                         🖥️ Assistir: https://www.youtube.com/watch?v=${element.mainStream.streamChannel}
@@ -199,9 +199,9 @@ export const lastResultsCommand = {
             const res = await axios.get(
                 `${DRAFT_API_URL}/matches?page=1&amount=10&finished=1&featured=0&team=${DRAFT_TEAM_ID}&showHidden=0`
             );
-            const { list, totalItems } = res.data.data;
+            const { list } = res.data.data;
 
-            if (totalItems > 0 && list.length > 0) {
+            if (list.length > 0) {
                 let results = '';
                 let victories = 0;
                 let defeats = 0;
